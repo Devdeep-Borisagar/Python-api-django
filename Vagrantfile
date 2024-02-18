@@ -16,7 +16,9 @@ Vagrant.configure("2") do |config|
  config.vm.box_version = "~> 20200304.0.0"
 
  config.vm.network "forwarded_port", guest: 8000, host: 8000
- config.vm.boot_timeout = 600
+ config.vm.boot_timeout = 6000
+ config.ssh.insert_key = false
+
  config.vm.provision "shell", inline: <<-SHELL
    systemctl disable apt-daily.service
    systemctl disable apt-daily.timer
